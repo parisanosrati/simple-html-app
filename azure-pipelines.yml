@@ -8,8 +8,10 @@ steps:
 - script: echo "Running on self-hosted agent"
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.x'
+    versionSpec: '3.8.x'
     addToPath: true
+  env:
+    AGENT_TOOLSDIRECTORY: '/opt/hostedtoolcache'
 
 - script: echo Build Started
 
