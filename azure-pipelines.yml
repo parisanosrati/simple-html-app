@@ -1,8 +1,12 @@
 trigger:
 - master
-
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default   # Change 'Default' if your agent pool has a different name
+  demands:
+    - agent.name -equals Parisas-MacBook-Pro  # Replace with your self-hosted agent name
+steps:
+- script: echo "Running on self-hosted agent"
+
 steps:
 - task: UsePythonVersion@0
   inputs:
