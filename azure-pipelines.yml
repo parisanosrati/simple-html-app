@@ -6,8 +6,6 @@ pool:
     - agent.name -equals Parisas-MacBook-Pro  # Replace with your self-hosted agent name
 steps:
 - script: echo "Running on self-hosted agent"
-
-steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.x'
