@@ -1,0 +1,37 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+- script: echo Build Started
+
+# Install dependencies (if any) for your app here
+
+- task: CopyFiles@2
+  inputs:
+    contents: '**'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'drop'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(6c4b7d90-5ce0-444c-826c-3195e0731760)'
+    appType: 'webAppLinux'
+    WebAppName: 'mytestpipline'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'appserviceRg'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|18-lts'
+    StartupCommand: 'start'
