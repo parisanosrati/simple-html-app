@@ -3,6 +3,7 @@ trigger:
 
 pool:
   name: parisaagentpool
+  vmImage: 'ubuntu-latest'
 steps:
 - task: UsePythonVersion@0
   inputs:
