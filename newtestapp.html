@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple App</title>
+    <script>
+        // Check if there's already an "app" state saved in localStorage
+        function checkAppState() {
+            let appState = localStorage.getItem('appState');
+            if (appState === 'app1') {
+                document.getElementById('appDisplay').innerText = 'app1';
+                localStorage.setItem('appState', 'app2');
+            } else {
+                document.getElementById('appDisplay').innerText = 'app2';
+                localStorage.setItem('appState', 'app1');
+            }
+        }
+    </script>
+</head>
+<body onload="checkAppState()">
+    <h1 id="appDisplay"></h1>
+</body>
+</html>
