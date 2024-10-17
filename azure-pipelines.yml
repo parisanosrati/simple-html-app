@@ -3,6 +3,8 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  name: parisaagentpool
+
 
 steps:
 - task: UsePythonVersion@0
@@ -18,7 +20,6 @@ steps:
   inputs:
     contents: '**'
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
